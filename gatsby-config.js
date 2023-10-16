@@ -23,13 +23,13 @@ module.exports = {
   },
   plugins: [
     "gatsby-transformer-remark",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "posts",
-        path: `${__dirname}/src/posts/`,
-      },
-    },
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "posts",
+    //     path: `${__dirname}/src/posts/`,
+    //   },
+    // },
     {
       resolve: "gatsby-plugin-apollo",
       options: {
