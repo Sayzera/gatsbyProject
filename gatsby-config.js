@@ -16,7 +16,7 @@ module.exports = {
     description: `Kılıçlar Hırdavat - Toptan ve Perakende Malzeme Satışı`,
     twitterUsername: `@kiliclarhirdavat`,
     image: `/kiliclar-hirdavat-logo-min.jpg`,
-    siteUrl: `https://www.kiliclarhirdavat.com`,
+    siteUrl: `https://frolicking-arithmetic-9868af.netlify.app/`,
   },
   flags: {
     DEV_SSR: false,
