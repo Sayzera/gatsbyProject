@@ -9,7 +9,7 @@ import { HiOutlinePhoneIncoming } from "react-icons/hi";
 
 function WithStyles({ image, title }) {
   return (
-    <div className="widget-cart !w-[250px] md:w-100">
+    <div className="widget-cart-similar">
       <div>
         <div className="bg-[#3ec461] widget-cart-logo">
           <FaTruckFast className="text-xl text-white" />
@@ -55,7 +55,7 @@ function WithStyles({ image, title }) {
     </div>
   );
 }
-export default function BestsellingProducts({ type }) {
+export default function SimilarProducts({ type }) {
   const [products, setProducts] = React.useState([]);
   React.useEffect(() => {
     cokSatanUrunler();

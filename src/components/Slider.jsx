@@ -3,14 +3,15 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import useSliderData from "../hooks/useSliderData";
 import { Link } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 function WithStyles({ image, title, slug }) {
   return (
     <Link to={`urunler/?categories=${slug}`}>
       <div className="w-[115px] flex flex-col items-center justify-center">
-        <img
-          src={image}
-          alt="Kılıçlar Hırdavat Slider"
+        <GatsbyImage
+          image={getImage(image)}
+          alt={title}
           style={{
             border: "1px solid #e6e6e6",
             borderRadius: "50%",
@@ -24,6 +25,7 @@ function WithStyles({ image, title, slug }) {
             userSelect: "none",
           }}
         />
+
         <p className="text-center slider-item-span font-bold">{title}</p>
       </div>
     </Link>
@@ -99,7 +101,7 @@ export default function Slider() {
         {_data.map((item) => (
           <WithStyles
             key={item.node.category_name}
-            image={item.node.image.asset.url}
+            image={item.node.image.asset}
             title={item.node.category_name}
             slug={item.node.slug.current}
           />

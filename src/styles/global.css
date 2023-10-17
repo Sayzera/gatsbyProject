@@ -100,6 +100,15 @@
     border: solid 1px #e6e6e6;
     background-color: #fff;
 }
+.widget-cart-similar {
+    width: 224px !important;
+    height: 375px;
+    margin: 1px 15px 1px 1px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+    border: solid 1px #e6e6e6;
+    background-color: #fff;
+}
 
 
 
@@ -201,6 +210,15 @@ border: 2px solid var(--Color---5, #A2A6B0);
   .breadCrumb span {
     font-size: 13px; 
   }
+  .widget-cart-similar {
+    width: 250px !important;
+    height: 375px;
+    margin: 1px 15px 1px 1px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+    border: solid 1px #e6e6e6;
+    background-color: #fff;
+}
         .widget-cart {
             width: 100% !important;
             height: 375px;

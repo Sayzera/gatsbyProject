@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
 import kiliclarHirdavatLogo from "../assets/images/kiliclar-hirdavat-logo-min.jpg";
-import { AiOutlineWhatsApp } from "react-icons/ai";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+
 import {
   ArrowPathIcon,
   Bars3Icon,
@@ -63,8 +64,6 @@ export default function Navbar() {
   const _data = useNavbarData();
   const _categeories = useSliderData();
 
-  console.log(_categeories, "_categeories");
-
   return (
     <header className="bg-white">
       <nav
@@ -115,7 +114,10 @@ export default function Navbar() {
                         className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
                       >
                         <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                          <img src={item.node.image.asset.url} alt="" />
+                          <GatsbyImage
+                            image={getImage(item.node.image.asset)}
+                            alt={item.node.category_name}
+                          />
                         </div>
                         <div className="flex-auto">
                           <Link

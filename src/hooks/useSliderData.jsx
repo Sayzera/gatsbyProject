@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby";
-
+import gatsbyImageData from "gatsby-plugin-image";
 export default function useSliderData() {
   const { allSanityCategories } = useStaticQuery(
     graphql`
@@ -11,7 +11,7 @@ export default function useSliderData() {
               category_name
               image {
                 asset {
-                  url
+                  gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
                 }
               }
               slug {

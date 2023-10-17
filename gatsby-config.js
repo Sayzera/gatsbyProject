@@ -22,14 +22,32 @@ module.exports = {
     DEV_SSR: false,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `dominantColor`,
+          quality: 50,
+          breakpoints: [750, 1080, 1366, 1920],
+          backgroundColor: `transparent`,
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        },
+      },
+    },
     "gatsby-transformer-remark",
-    // {
-    //   resolve: "gatsby-source-filesystem",
-    //   options: {
-    //     name: "posts",
-    //     path: `${__dirname}/src/posts/`,
-    //   },
-    // },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: `${__dirname}/src/images/`, // Resimlerin bulunduğu dizini ayarlayın
+      },
+      __key: "images",
+    },
     {
       resolve: "gatsby-plugin-apollo",
       options: {

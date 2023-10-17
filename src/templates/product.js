@@ -1,10 +1,9 @@
 import { Link } from "gatsby";
 import React from "react";
-import BreadCrumb from "../components/BreadCrumb";
 import ProductImagesSwiper from "../components/ProductImagesSwiper";
-import BestsellingProducts from "../components/BestsellingProducts";
 import StaticBreadCrumb from "../components/StaticBreadCrumb";
 import { SEO } from "../components/seo";
+import SimilarProducts from "../components/SimilarProducts";
 
 export default function UrunDetay(props) {
   const {
@@ -91,7 +90,7 @@ export default function UrunDetay(props) {
       <div className="mt-[25px] cart-container">
         <span className="title">Çok Satan Ürünler</span>
         <div>
-          <BestsellingProducts />
+          <SimilarProducts />
         </div>
       </div>
     </div>
