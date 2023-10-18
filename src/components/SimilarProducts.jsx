@@ -79,7 +79,10 @@ export default function SimilarProducts({ type }) {
           key={item._id}
           to={`/urunler/${item.category.slug.current}/${item.slug.current}/${item._id}`}
         >
-          <WithStyles image={item.images[0].asset} title={item.title} />
+          <WithStyles
+            image={item?.images?.length > 0 ? item?.images[0].asset : null}
+            title={item.title}
+          />
         </Link>
       ))}
     </div>

@@ -26,7 +26,7 @@ export default function Product({ product }) {
               <img
                 src={sanityImageBuilder(product?.images[0]).width(224).url()}
                 alt="Kılıçlar Hırdavat Slider"
-                className="min-h-[150px] !w-[224px]"
+                className="h-[150px] !w-[224px]"
               />
             </div>
 

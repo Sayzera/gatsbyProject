@@ -4,11 +4,62 @@ import ProductImagesSwiper from "../components/ProductImagesSwiper";
 import StaticBreadCrumb from "../components/StaticBreadCrumb";
 import { SEO } from "../components/seo";
 import SimilarProducts from "../components/SimilarProducts";
+import BlockContent from "@sanity/block-content-to-react";
+import { PortableText } from "@portabletext/react";
 
 export default function UrunDetay(props) {
   const {
     pageContext: { data },
+    pageContext: { products },
   } = props;
+
+  const _product = products?.filter((item) => item._id == data._id);
+
+  console.log("_product", _product);
+
+  const myPortableTextComponents = {
+    types: {
+      image: ({ value }) => <img src={value.imageUrl} />,
+      callToAction: ({ value, isInline }) =>
+        isInline ? (
+          <a href={value.url}>{value.text}</a>
+        ) : (
+          <div className="callToAction">{value.text}</div>
+        ),
+    },
+
+    list: {
+      // Ex. 1: customizing common list types
+      bullet: ({ children }) => <ul className="mt-xl">{children}</ul>,
+      number: ({ children }) => <ol className="mt-lg">{children}</ol>,
+
+      // Ex. 2: rendering custom lists
+      checkmarks: ({ children }) => (
+        <ol className="m-auto text-lg">{children}</ol>
+      ),
+    },
+
+    listItem: {
+      // Ex. 1: customizing common list types
+      bullet: ({ children }) => <li> ✅ {children}</li>,
+
+      // Ex. 2: rendering custom list items
+      checkmarks: ({ children }) => <li>✅ {children}</li>,
+    },
+
+    marks: {
+      link: ({ children, value }) => {
+        const rel = !value?.href?.startsWith("/")
+          ? "noreferrer noopener"
+          : undefined;
+        return (
+          <a href={value.href} rel={rel}>
+            {children}
+          </a>
+        );
+      },
+    },
+  };
 
   return (
     <div className="mx-auto  max-w-7xl items-center justify-between px-6 lg:px-8">
@@ -64,9 +115,10 @@ export default function UrunDetay(props) {
             <ul className="detail-attr-container">
               <li className="detail-attr-item">
                 <span>
-                  {data.overview.map((item, index) => {
-                    return <span>{item.children[0].text}</span>;
-                  })}
+                  <PortableText
+                    value={_product?.length > 0 ? _product[0]?.overview : []}
+                    components={myPortableTextComponents}
+                  />
                 </span>
               </li>
             </ul>
@@ -77,11 +129,10 @@ export default function UrunDetay(props) {
 
             <ul className="detail-attr-container">
               <li className="detail-attr-item">
-                <span>
-                  {data?.sevkiyat?.map((item, index) => {
-                    return <span>{item.children[0].text}</span>;
-                  })}
-                </span>
+                <PortableText
+                  value={_product?.length > 0 ? _product[0]?.sevkiyat : []}
+                  components={myPortableTextComponents}
+                />
               </li>
             </ul>
           </div>

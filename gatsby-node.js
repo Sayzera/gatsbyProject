@@ -1,6 +1,14 @@
 const path = require(`path`);
 const gatsbyImageData = require("gatsby-plugin-image");
 
+const { createClient } = require("@sanity/client");
+const client = createClient({
+  projectId: "lauo4qtb",
+  dataset: "production",
+  useCdn: true, // set to `false` to bypass the edge cache
+  apiVersion: "2023-05-03",
+});
+
 // Log out information after a build is done
 exports.onPostBuild = ({ reporter }) => {
   reporter.info(`Your Gatsby site has been built!`);
@@ -19,10 +27,12 @@ exports.createPages = async ({ graphql, actions }) => {
             _id
             title
             overview {
-              _key
-              _type
-              children {
-                text
+              ... on SanityBlock {
+                _key
+                _type
+                children {
+                  text
+                }
               }
             }
             seo_description
@@ -60,12 +70,16 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
+
+  let products = await client.fetch(`*[_type == "products"]`);
+
   result.data.allSanityProducts.edges.forEach((edge) => {
     createPage({
       path: `urunler/${edge.node.category.slug.current}/${edge.node.slug.current}/${edge.node._id}`,
       component: productTemplate,
       context: {
         data: edge.node,
+        products,
       },
     });
   });

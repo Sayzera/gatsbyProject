@@ -8,7 +8,6 @@ export default function Footer() {
   const [categories, setCategories] = React.useState([]);
   const kategorileriGetir = async () => {
     let data = await getCategories();
-
     setCategories(data);
   };
   React.useEffect(() => {
