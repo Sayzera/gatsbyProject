@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/zoom";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 // import required modules
 import { Pagination, Navigation, Zoom } from "swiper/modules";
@@ -27,13 +28,9 @@ export default function ProductImagesSwiper(data) {
         return (
           <SwiperSlide>
             <div className="swiper-zoom-container">
-              <img
-                src={image.asset.url}
+              <GatsbyImage
+                image={getImage(image.asset)}
                 alt="Kılıçlar Hırdavat Slider"
-                className="mim-w-[300px] min-h-[456px]  "
-                style={{
-                  objectFit: "contain",
-                }}
               />
             </div>
           </SwiperSlide>

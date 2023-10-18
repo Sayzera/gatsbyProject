@@ -10,7 +10,6 @@ export default function UrunDetay(props) {
     pageContext: { data },
   } = props;
 
-  console.log(data);
   return (
     <div className="mx-auto  max-w-7xl items-center justify-between px-6 lg:px-8">
       {/* 
@@ -41,13 +40,15 @@ export default function UrunDetay(props) {
                     {data.ozellikler.map((item, index) => {
                       return (
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                          <th
-                            scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                          <td
+                            class="px-2 py-4 font-medium text-gray-900  dark:text-white"
+                            style={{
+                              maxWidth: "100px",
+                            }}
                           >
                             {item.title}
-                          </th>
-                          <td class="px-6 py-4">{item.description}</td>
+                          </td>
+                          <td class="px-2 py-4">{item.description}</td>
                         </tr>
                       );
                     })}
@@ -64,7 +65,7 @@ export default function UrunDetay(props) {
               <li className="detail-attr-item">
                 <span>
                   {data.overview.map((item, index) => {
-                    return <span>{item._rawChildren[0].text}</span>;
+                    return <span>{item.children[0].text}</span>;
                   })}
                 </span>
               </li>

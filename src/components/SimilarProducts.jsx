@@ -22,7 +22,7 @@ function WithStyles({ image, title }) {
           <img
             src={sanityImageBuilder(image).url()}
             alt="Kılıçlar Hırdavat Slider"
-            className="min-h-[150px] w-100 md:!w-[224px]"
+            className="h-[150px] w-100 md:!w-[224px]"
           />
         </div>
 
@@ -67,7 +67,6 @@ export default function SimilarProducts({ type }) {
     console.log("dataa", data);
   }
 
-  console.log(products);
   return (
     <div
       className="

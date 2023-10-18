@@ -1,58 +1,13 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
-import kiliclarHirdavatLogo from "../assets/images/kiliclar-hirdavat-logo-min.jpg";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-} from "@heroicons/react/20/solid";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Link } from "gatsby";
 import useNavbarData from "../hooks/useNavbarData";
 import useSliderData from "../hooks/useSliderData";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-const products = [
-  {
-    name: "Analytics",
-    description: "Get a better understanding of your traffic",
-    href: "#",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Engagement",
-    description: "Speak directly to your customers",
-    href: "#",
-    icon: CursorArrowRaysIcon,
-  },
-  {
-    name: "Security",
-    description: "Your customers’ data will be safe and secure",
-    href: "#",
-    icon: FingerPrintIcon,
-  },
-  {
-    name: "Integrations",
-    description: "Connect with third-party tools",
-    href: "#",
-    icon: SquaresPlusIcon,
-  },
-  {
-    name: "Automations",
-    description: "Build strategic funnels that will convert",
-    href: "#",
-    icon: ArrowPathIcon,
-  },
-];
 const callsToAction = [];
 
 function classNames(...classes) {
@@ -73,7 +28,15 @@ export default function Navbar() {
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <img className="h-16 w-auto" src={_data.logo.asset.url} alt="" />
+            <GatsbyImage
+              image={getImage(_data.logo.asset)}
+              alt="Kılıçlar Hırdavat"
+              placeholder="blurred"
+              style={{
+                height: "5rem",
+                width: "200px",
+              }}
+            />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -87,6 +50,12 @@ export default function Navbar() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
+          <Link
+            to="/urunler/"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Ürünlerimiz
+          </Link>
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
               Kategoriler
@@ -164,7 +133,7 @@ export default function Navbar() {
             Fırsat Ürünleri
           </Link>
           <Link
-            to="/"
+            to="/iletisim"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             İletişim
@@ -183,7 +152,16 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img className="h-16 w-auto" src={kiliclarHirdavatLogo} alt="" />
+              <GatsbyImage
+                image={getImage(_data.logo.asset)}
+                alt="Kılıçlar Hırdavat"
+                placeholder="blurred"
+                style={{
+                  height: "5rem",
+                  width: "200px",
+                  objectFit: "contain",
+                }}
+              />
             </Link>
             <button
               type="button"
@@ -197,6 +175,13 @@ export default function Navbar() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
+                <Link
+                  onClick={() => setMobileMenuOpen(false)}
+                  to="/urunler/"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Ürünlerimiz
+                </Link>
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
@@ -231,19 +216,22 @@ export default function Navbar() {
                   )}
                 </Disclosure>
                 <Link
+                  onClick={() => setMobileMenuOpen(false)}
                   to="/urunler/?tur=en-cok-satanlar"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   En çok Satılanlar
                 </Link>
                 <Link
+                  onClick={() => setMobileMenuOpen(false)}
                   to="/urunler/?tur=firsat-urunleri"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Fırsat Ürünleri
                 </Link>
                 <Link
-                  to="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  to="/iletisim"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   İletişim

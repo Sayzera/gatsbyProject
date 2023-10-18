@@ -1,4 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby";
+import gatsbyImageData from "gatsby-plugin-image";
 
 export default function useNavbarData() {
   const { sanitySettings } = useStaticQuery(
@@ -8,7 +9,7 @@ export default function useNavbarData() {
           id
           logo {
             asset {
-              url
+              gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
             }
           }
         }

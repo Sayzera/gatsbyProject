@@ -1,4 +1,6 @@
 const path = require(`path`);
+const gatsbyImageData = require("gatsby-plugin-image");
+
 // Log out information after a build is done
 exports.onPostBuild = ({ reporter }) => {
   reporter.info(`Your Gatsby site has been built!`);
@@ -17,19 +19,27 @@ exports.createPages = async ({ graphql, actions }) => {
             _id
             title
             overview {
-              _rawChildren
+              _key
+              _type
+              children {
+                text
+              }
             }
             seo_description
             seo_keywords
             seo_title
             images {
               asset {
-                url
+                gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
               }
             }
             sevkiyat {
-              children {
-                text
+              ... on SanityBlock {
+                _key
+                _type
+                children {
+                  text
+                }
               }
             }
             ozellikler {
