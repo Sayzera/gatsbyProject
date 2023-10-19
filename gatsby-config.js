@@ -16,7 +16,7 @@ module.exports = {
     description: `Kılıçlar Hırdavat - Toptan ve Perakende Malzeme Satışı`,
     twitterUsername: `@kiliclarhirdavat`,
     image: `/kiliclar-hirdavat-logo-min.jpg`,
-    siteUrl: `https://frolicking-arithmetic-9868af.netlify.app/`,
+    siteUrl: `https://kiliclarticaret.com/`,
   },
   flags: {
     DEV_SSR: false,
@@ -97,9 +97,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://frolicking-arithmetic-9868af.netlify.app",
-        sitemap:
-          "https://frolicking-arithmetic-9868af.netlify.app/sitemap-0.xml",
+        host: "https://kiliclarticaret.com",
+        sitemap: "https://kiliclarticaret.com/sitemap-0.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
