@@ -6,6 +6,8 @@ import { SEO } from "../components/seo";
 import SimilarProducts from "../components/SimilarProducts";
 import BlockContent from "@sanity/block-content-to-react";
 import { PortableText } from "@portabletext/react";
+import { Helmet } from "react-helmet";
+import { useSiteMetadata } from "../hooks/use-site-metadata";
 
 export default function UrunDetay(props) {
   const {
@@ -151,5 +153,36 @@ export default function UrunDetay(props) {
 
 export const Head = (props) => {
   let data = props.pageContext.data;
-  return <SEO title={"Kılıçlar Hırdavat | " + data.title}></SEO>;
+  let settings = useSiteMetadata();
+
+  console.log("settings", settings);
+  console.log("head data", data);
+  return (
+    <SEO title={"Kılıçlar Hırdavat | " + data.title}>
+      <Helmet>
+        <script type="application/ld+json">
+          {`
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "${data.title}",
+            "description": "${data.seo_description}",
+            "url": "${settings.siteUrl}/urunler/${data.category.slug}/${data.slug.current}/${data._id}",
+            "brand": {
+              "@type": "Brand",
+              "name": "Kılıçlar Hırdavat"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": "${settings.siteUrl}/urunler/${data.category.slug}/${data.slug.current}/${data._id}",
+              "priceCurrency": "TL",
+              "availability": "https://schema.org/InStock"
+            },
+            "category": "${data.category.category_name}",
+            "keywords": "${data.seo_keywords}",
+            "image":"${data.images[0].asset.gatsbyImageData.images.fallback.src}"
+  `}
+        </script>
+      </Helmet>
+    </SEO>
+  );
 };

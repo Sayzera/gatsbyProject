@@ -78,6 +78,7 @@ module.exports = {
     "gatsby-plugin-postcss",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-offline",
 
     {
       resolve: "gatsby-plugin-manifest",
@@ -92,6 +93,15 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://frolicking-arithmetic-9868af.netlify.app",
+        sitemap:
+          "https://frolicking-arithmetic-9868af.netlify.app/sitemap-0.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
     },
   ],
 };
