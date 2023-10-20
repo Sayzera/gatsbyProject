@@ -1,5 +1,6 @@
 import React from "react";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
+import { Helmet } from "react-helmet";
 
 export const SEO = ({ title, description, pathname, children }) => {
   const {
@@ -21,6 +22,13 @@ export const SEO = ({ title, description, pathname, children }) => {
   return (
     <>
       <title>{seo.title}</title>
+      {/* lang */}
+      <html lang="tr" />
+      {/* meta charset */}
+      <meta charSet="utf-8" />
+      {/* meta viewport */}
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      {/* meta description */}
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
       <meta name="twitter:card" content="summary_large_image" />
