@@ -78,7 +78,6 @@ module.exports = {
     "gatsby-plugin-postcss",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-offline",
 
     {
       resolve: "gatsby-plugin-manifest",
