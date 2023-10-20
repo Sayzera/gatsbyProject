@@ -13,6 +13,5 @@ export const client = createClient({
 export async function getPosts() {
   const posts = await client.fetch('*[_type == "products"]');
 
-  console.log(posts);
   return posts;
 }

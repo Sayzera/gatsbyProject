@@ -22,7 +22,6 @@ export default function GetSomeCategories() {
     kategorileriGetir();
   }, []);
 
-  console.log(categories, "categories");
   return (
     <div className="w-100 mt-[50px]">
       <div className="grid md:grid-cols-2 items-start gap-2">

@@ -17,8 +17,6 @@ export default function UrunDetay(props) {
 
   const _product = products?.filter((item) => item._id == data._id);
 
-  console.log("_product", _product);
-
   const myPortableTextComponents = {
     types: {
       image: ({ value }) => <img src={value.imageUrl} />,
@@ -155,8 +153,6 @@ export const Head = (props) => {
   let data = props.pageContext.data;
   let settings = useSiteMetadata();
 
-  console.log("settings", settings);
-  console.log("head data", data);
   return (
     <SEO title={"Kılıçlar Hırdavat | " + data.title}>
       <Helmet>

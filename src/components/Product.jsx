@@ -7,7 +7,6 @@ import { sanityImageBuilder } from "../lib/sanityImageBuilder";
 export default function Product({ product }) {
   const { title } = product;
 
-  console.log(product, "product");
   return (
     <div className=" flex flex-col items-center">
       <div className="widget-cart   ">

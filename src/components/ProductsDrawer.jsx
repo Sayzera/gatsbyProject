@@ -23,7 +23,6 @@ function ProductsDrawer({ isOpen, setIsOpen }) {
 
   const { loading, error, data } = useQuery(ALL_CATEGORIES_QUERY);
 
-  console.log(data);
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };

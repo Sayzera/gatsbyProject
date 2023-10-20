@@ -64,10 +64,8 @@ export default function BestsellingProducts({ type }) {
   async function cokSatanUrunler() {
     let data = await getProducts([], "desc", type);
     setProducts(data);
-    console.log("dataa", data);
   }
 
-  console.log(products);
   return (
     <div
       className="

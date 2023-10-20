@@ -6,6 +6,8 @@ import { ImWhatsapp } from "react-icons/im";
 import getProducts from "../api/getProducts";
 import { sanityImageBuilder } from "../lib/sanityImageBuilder";
 import { HiOutlinePhoneIncoming } from "react-icons/hi";
+import useGetAllProducts from "../hooks/useGetAllProducts";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 function WithStyles({ image, title }) {
   return (
@@ -19,10 +21,15 @@ function WithStyles({ image, title }) {
         </div>
 
         <div className="p-2  md:!w-[224px]">
-          <img
+          {/* <img
             src={sanityImageBuilder(image).url()}
             alt="Kılıçlar Hırdavat Slider"
-            className="h-[150px] w-100 md:!w-[224px]"
+         
+          /> */}
+          <GatsbyImage
+            image={getImage(image)}
+            alt="Kılıçlar Hırdavat Slider"
+            className="h-[150px] w-100 md:!w-[205px]"
           />
         </div>
 
@@ -56,16 +63,7 @@ function WithStyles({ image, title }) {
   );
 }
 export default function SimilarProducts({ type }) {
-  const [products, setProducts] = React.useState([]);
-  React.useEffect(() => {
-    cokSatanUrunler();
-  }, []);
-
-  async function cokSatanUrunler() {
-    let data = await getProducts([], "desc", type);
-    setProducts(data);
-    console.log("dataa", data);
-  }
+  const _data = useGetAllProducts();
 
   return (
     <div
@@ -74,14 +72,16 @@ export default function SimilarProducts({ type }) {
       overflow-x-auto	 
       "
     >
-      {products.map((item) => (
+      {_data?.edges.map((item) => (
         <Link
-          key={item._id}
-          to={`/urunler/${item.category.slug.current}/${item.slug.current}/${item._id}`}
+          key={item.node._id}
+          to={`/urunler/${item.node.category.slug.current}/${item.node.slug.current}/${item.node._id}`}
         >
           <WithStyles
-            image={item?.images?.length > 0 ? item?.images[0].asset : null}
-            title={item.title}
+            image={
+              item?.node.images?.length > 0 ? item?.node.images[0].asset : null
+            }
+            title={item.node.title}
           />
         </Link>
       ))}

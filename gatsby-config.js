@@ -109,7 +109,6 @@ module.exports = {
         trackingIds: [
           "G-FHWYM64MVG", // Google Analytics / GA
         ],
-
         // This object is used for configuration specific to this plugin
         pluginConfig: {
           // Puts tracking script in the head instead of the body
