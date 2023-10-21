@@ -75,7 +75,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   result.data.allSanityProducts.edges.forEach((edge) => {
     createPage({
-      path: `urunler/${edge.node.category.slug.current}/${edge.node.slug.current}/${edge.node._id}`,
+      path: `urunler/${edge.node.category?.slug.current}/${edge.node.slug.current}/${edge.node._id}`,
       component: productTemplate,
       context: {
         data: edge.node,

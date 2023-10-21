@@ -75,7 +75,7 @@ export default function SimilarProducts({ type }) {
       {_data?.edges.map((item) => (
         <Link
           key={item.node._id}
-          to={`/urunler/${item.node.category.slug.current}/${item.node.slug.current}/${item.node._id}`}
+          to={`/urunler/${item.node.category?.slug.current}/${item.node.slug.current}/${item.node._id}`}
         >
           <WithStyles
             image={

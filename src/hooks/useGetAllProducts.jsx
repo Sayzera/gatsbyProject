@@ -4,7 +4,7 @@ export default function useGetAllProducts() {
   const { allSanityProducts } = useStaticQuery(
     graphql`
       query ProductsQuery {
-        allSanityProducts {
+        allSanityProducts(filter: { product_options: { ne: "5" } }) {
           edges {
             node {
               id

@@ -12,7 +12,7 @@ export default function Product({ product }) {
       <div className="widget-cart   ">
         <div>
           <Link
-            to={`/urunler/${product.category.slug.current}/${product.slug.current}/${product._id}`}
+            to={`/urunler/${product.category?.slug.current}/${product.slug.current}/${product._id}`}
           >
             <div className="bg-[#3ec461] widget-cart-logo">
               <FaTruckFast className="text-xl text-white" />

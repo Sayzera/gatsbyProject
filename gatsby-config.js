@@ -13,7 +13,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Kılıçlar Hırdavat`,
-    description: `Kılıçlar Hırdavat - Toptan ve Perakende Malzeme Satışı`,
+    description: `Kılıçlar Hırdavat Ankara - Toptan  Malzeme Satışı`,
     twitterUsername: `@kiliclarhirdavat`,
     image: `/kiliclar-hirdavat-logo-min.jpg`,
     siteUrl: `https://kiliclarticaret.com/`,

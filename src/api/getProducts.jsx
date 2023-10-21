@@ -54,7 +54,7 @@ export default async function getProducts(
   const posts = await client.fetch(`
     *[_type == "products"  ${_additionalQuery
       .map((item) => item.value)
-      .join(" ")} ] ${_additionalOrder} {
+      .join(" ")} && product_options != "5" ] ${_additionalOrder} {
     ...,
 
     category->{
