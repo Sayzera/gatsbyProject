@@ -184,3 +184,5 @@ export default function Urunler({ params }) {
     </div>
   );
 }
+
+// ok
