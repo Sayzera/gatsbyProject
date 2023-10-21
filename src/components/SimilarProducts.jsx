@@ -65,6 +65,11 @@ function WithStyles({ image, title }) {
 export default function SimilarProducts({ type }) {
   const _data = useGetAllProducts();
 
+  let _rand =
+    _data?.edges.length > Math.floor(Math.random() * _data?.edges.length - 20)
+      ? Math.floor(Math.random() * _data?.edges.length - 20)
+      : 0;
+
   return (
     <div
       className="
@@ -72,19 +77,28 @@ export default function SimilarProducts({ type }) {
       overflow-x-auto	 
       "
     >
-      {_data?.edges.map((item) => (
-        <Link
-          key={item.node._id}
-          to={`/urunler/${item.node.category?.slug.current}/${item.node.slug.current}/${item.node._id}`}
-        >
-          <WithStyles
-            image={
-              item?.node.images?.length > 0 ? item?.node.images[0].asset : null
-            }
-            title={item.node.title}
-          />
-        </Link>
-      ))}
+      {_data?.edges
+        .slice(
+          Math.abs(_rand),
+          Math.abs(_rand) + 20 > _data?.edges.length
+            ? _data?.edges.length
+            : Math.abs(_rand) + 20
+        )
+        .map((item) => (
+          <Link
+            key={item.node._id + Math.random()}
+            to={`/urunler/${item.node.category?.slug.current}/${item.node.slug.current}/${item.node._id}`}
+          >
+            <WithStyles
+              image={
+                item?.node.images?.length > 0
+                  ? item?.node.images[0].asset
+                  : null
+              }
+              title={item.node.title}
+            />
+          </Link>
+        ))}
     </div>
   );
 }
