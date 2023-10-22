@@ -10,6 +10,7 @@ import { ProductJsonLd } from "gatsby-plugin-next-seo";
 import { FAQJsonLd } from "gatsby-plugin-next-seo";
 import { SpeakableJsonLd } from "gatsby-plugin-next-seo";
 
+// deploy
 export default function UrunDetay(props) {
   const {
     pageContext: { data },
