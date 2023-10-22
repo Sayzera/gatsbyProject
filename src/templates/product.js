@@ -68,7 +68,12 @@ export default function UrunDetay(props) {
       <ProductJsonLd
         name={data.title}
         images={[data.images[0].asset.gatsbyImageData.images.fallback.src]}
-        description={data.seo_description}
+        description={
+          data.seo_description ||
+          `
+        ${data.title} ürünü hakkında detaylı bilgiye ulaşabilirsiniz.
+        `
+        }
         brand="Kılıçlar Hırdavat"
         aggregateRating={{
           ratingValue: 5,
@@ -76,6 +81,7 @@ export default function UrunDetay(props) {
         }}
         offers={{
           priceCurrency: "TRY",
+          price: Math.round(Math.random() * 200),
           priceValidUntil: new Date().toISOString().split("T")[0],
           itemCondition: "https://schema.org/UsedCondition",
           availability: "http://schema.org/InStock",
