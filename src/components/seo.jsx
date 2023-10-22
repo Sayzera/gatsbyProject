@@ -2,7 +2,13 @@ import React from "react";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
 import { Helmet } from "react-helmet";
 
-export const SEO = ({ title, description, pathname, children }) => {
+export const SEO = ({
+  title,
+  description,
+  pathname,
+  children,
+  productImage,
+}) => {
   const {
     title: defaultTitle,
     description: defaultDescription,
@@ -11,10 +17,12 @@ export const SEO = ({ title, description, pathname, children }) => {
     twitterUsername,
   } = useSiteMetadata();
 
+  const _image = productImage || `${siteUrl}${image}`;
+
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image}`,
+    image: _image,
     url: `${siteUrl}${pathname || ``}`,
     twitterUsername,
   };

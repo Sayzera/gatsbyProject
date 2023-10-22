@@ -26,7 +26,7 @@ export default function ProductImagesSwiper(data) {
     >
       {_images?.map((image) => {
         return (
-          <SwiperSlide>
+          <SwiperSlide key={Math.random() * 990}>
             <div className="swiper-zoom-container">
               <GatsbyImage
                 image={getImage(image.asset)}

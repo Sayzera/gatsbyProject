@@ -4,10 +4,11 @@ import ProductImagesSwiper from "../components/ProductImagesSwiper";
 import StaticBreadCrumb from "../components/StaticBreadCrumb";
 import { SEO } from "../components/seo";
 import SimilarProducts from "../components/SimilarProducts";
-import BlockContent from "@sanity/block-content-to-react";
 import { PortableText } from "@portabletext/react";
-import { Helmet } from "react-helmet";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
+import { ProductJsonLd } from "gatsby-plugin-next-seo";
+import { FAQJsonLd } from "gatsby-plugin-next-seo";
+import { SpeakableJsonLd } from "gatsby-plugin-next-seo";
 
 export default function UrunDetay(props) {
   const {
@@ -16,6 +17,7 @@ export default function UrunDetay(props) {
   } = props;
 
   const _product = products?.filter((item) => item._id == data._id);
+  let settings = useSiteMetadata();
 
   const myPortableTextComponents = {
     types: {
@@ -63,6 +65,58 @@ export default function UrunDetay(props) {
 
   return (
     <div className="mx-auto  max-w-7xl items-center justify-between px-6 lg:px-8">
+      <ProductJsonLd
+        name={data.title}
+        images={[data.images[0].asset.gatsbyImageData.images.fallback.src]}
+        description={data.seo_description}
+        brand="Kılıçlar Hırdavat"
+        aggregateRating={{
+          ratingValue: 5,
+          reviewCount: 22,
+        }}
+        offers={{
+          priceCurrency: "TRY",
+          priceValidUntil: new Date().toISOString().split("T")[0],
+          itemCondition: "https://schema.org/UsedCondition",
+          availability: "http://schema.org/InStock",
+          url:
+            settings.siteUrl +
+            `/urunler/${data.category.slug.current}/${data.slug.current}/${data._id}`,
+        }}
+        mpn="925872"
+      />
+      <FAQJsonLd
+        questions={[
+          {
+            question: "Ürünlerinizin kalitesi nedir??",
+            answer:
+              "Cevap: Ürünlerimiz yüksek kalite standartlarına sahiptir ve düzenli olarak kalite kontrollerine tabi tutulurlar.",
+          },
+          {
+            question: `Toptan fiyatlandırma nedir?`,
+            answer: ` Fiyatlar toplu alım miktarına, ürün türüne ve ödeme koşullarına göre değişebilir. Daha fazla alım yaparsanız, birim fiyatlar daha düşük olabilir.`,
+          },
+          {
+            question: "Minimum sipariş miktarı nedir?",
+            answer: `Minimum sipariş miktarı, ürün türüne ve stok durumuna bağlı olarak değişebilir. Genellikle bir miktar belirlenir ve bu miktarın altındaki siparişler kabul edilmeyebilir.`,
+          },
+          {
+            question: `Teslimat süreleri nedir?`,
+            answer: `Teslimat süreleri sipariş miktarına ve coğrafi konumunuza bağlı olarak değişebilir. Normalde, siparişinizi aldıktan sonra 3 iş günü içinde teslimat yapabiliriz.`,
+          },
+          {
+            question: "İade politikası nedir",
+            answer: `Ürünlerimizle ilgili bir sorun yaşarsanız veya memnun kalmazsanız, bize ulaşarak iade veya değişim talebinde bulunabilirsiniz. İade politikamız hakkında daha fazla detay sunabiliriz.`,
+          },
+
+          {
+            question: "Toplu alım yapmak için nasıl bir süreç izlenir",
+            answer: `Toplu alım yapmak isterseniz, bir satış temsilcisi ile iletişime geçerek siparişinizi yerleştirebilirsiniz. Siparişinizi onayladıktan sonra, ödeme koşulları ve teslimat düzenlemeleri hakkında daha fazla detay sağlarız`,
+          },
+        ]}
+      />
+      <SpeakableJsonLd cssSelector={["#abc", "#root"]} />
+
       {/* 
       breadcrumb */}
       <StaticBreadCrumb data={data} />
@@ -85,21 +139,21 @@ export default function UrunDetay(props) {
             </h2>
 
             <div>
-              <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <div className="relative overflow-x-auto">
+                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <tbody>
                     {data.ozellikler.map((item, index) => {
                       return (
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                           <td
-                            class="px-2 py-4 font-medium text-gray-900  dark:text-white"
+                            className="px-2 py-4 font-medium text-gray-900  dark:text-white"
                             style={{
                               maxWidth: "100px",
                             }}
                           >
                             {item.title}
                           </td>
-                          <td class="px-2 py-4">{item.description}</td>
+                          <td className="px-2 py-4">{item.description}</td>
                         </tr>
                       );
                     })}
@@ -151,34 +205,13 @@ export default function UrunDetay(props) {
 
 export const Head = (props) => {
   let data = props.pageContext.data;
-  let settings = useSiteMetadata();
 
   return (
-    <SEO title={"Kılıçlar Hırdavat | " + data.title}>
-      <Helmet>
-        <script type="application/ld+json">
-          {`
-            "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "${data.title}",
-            "description": "${data.seo_description}",
-            "url": "${settings.siteUrl}/urunler/${data.category.slug}/${data.slug.current}/${data._id}",
-            "brand": {
-              "@type": "Brand",
-              "name": "Kılıçlar Hırdavat"
-            },
-            "offers": {
-              "@type": "Offer",
-              "url": "${settings.siteUrl}/urunler/${data.category.slug}/${data.slug.current}/${data._id}",
-              "priceCurrency": "TL",
-              "availability": "https://schema.org/InStock"
-            },
-            "category": "${data.category.category_name}",
-            "keywords": "${data.seo_keywords}",
-            "image":"${data.images[0].asset.gatsbyImageData.images.fallback.src}"
-  `}
-        </script>
-      </Helmet>
-    </SEO>
+    <SEO
+      title={"Kılıçlar Hırdavat | " + data.title}
+      description={data.seo_description}
+      pathname={`/urunler/${data.category.slug}/${data.slug}/${data._id}`}
+      productImage={data.images[0].asset.gatsbyImageData.images.fallback.src}
+    ></SEO>
   );
 };
