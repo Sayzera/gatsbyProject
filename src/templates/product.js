@@ -10,7 +10,6 @@ import { ProductJsonLd } from "gatsby-plugin-next-seo";
 import { FAQJsonLd } from "gatsby-plugin-next-seo";
 import { SpeakableJsonLd } from "gatsby-plugin-next-seo";
 
-// deploy
 export default function UrunDetay(props) {
   const {
     pageContext: { data },
@@ -66,32 +65,6 @@ export default function UrunDetay(props) {
 
   return (
     <div className="mx-auto  max-w-7xl items-center justify-between px-6 lg:px-8">
-      <ProductJsonLd
-        name={data.title}
-        images={[data.images[0].asset.gatsbyImageData.images.fallback.src]}
-        description={
-          data.seo_description ||
-          `
-        ${data.title} ürünü hakkında detaylı bilgiye ulaşabilirsiniz.
-        `
-        }
-        brand="Kılıçlar Hırdavat"
-        aggregateRating={{
-          ratingValue: 5,
-          reviewCount: 22,
-        }}
-        offers={{
-          priceCurrency: "TRY",
-          price: Math.round(Math.random() * 200),
-          priceValidUntil: new Date().toISOString().split("T")[0],
-          itemCondition: "https://schema.org/UsedCondition",
-          availability: "http://schema.org/InStock",
-          url:
-            settings.siteUrl +
-            `/urunler/${data.category.slug.current}/${data.slug.current}/${data._id}`,
-        }}
-        mpn="925872"
-      />
       <FAQJsonLd
         questions={[
           {
@@ -122,7 +95,6 @@ export default function UrunDetay(props) {
           },
         ]}
       />
-      <SpeakableJsonLd cssSelector={["#abc", "#root"]} />
 
       {/* 
       breadcrumb */}
