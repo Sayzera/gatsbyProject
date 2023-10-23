@@ -6,9 +6,7 @@ import { SEO } from "../components/seo";
 import SimilarProducts from "../components/SimilarProducts";
 import { PortableText } from "@portabletext/react";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
-import { ProductJsonLd } from "gatsby-plugin-next-seo";
 import { FAQJsonLd } from "gatsby-plugin-next-seo";
-import { SpeakableJsonLd } from "gatsby-plugin-next-seo";
 
 export default function UrunDetay(props) {
   const {
@@ -65,37 +63,6 @@ export default function UrunDetay(props) {
 
   return (
     <div className="mx-auto  max-w-7xl items-center justify-between px-6 lg:px-8">
-      <FAQJsonLd
-        questions={[
-          {
-            question: "Ürünlerinizin kalitesi nedir??",
-            answer:
-              "Cevap: Ürünlerimiz yüksek kalite standartlarına sahiptir ve düzenli olarak kalite kontrollerine tabi tutulurlar.",
-          },
-          {
-            question: `Toptan fiyatlandırma nedir?`,
-            answer: ` Fiyatlar toplu alım miktarına, ürün türüne ve ödeme koşullarına göre değişebilir. Daha fazla alım yaparsanız, birim fiyatlar daha düşük olabilir.`,
-          },
-          {
-            question: "Minimum sipariş miktarı nedir?",
-            answer: `Minimum sipariş miktarı, ürün türüne ve stok durumuna bağlı olarak değişebilir. Genellikle bir miktar belirlenir ve bu miktarın altındaki siparişler kabul edilmeyebilir.`,
-          },
-          {
-            question: `Teslimat süreleri nedir?`,
-            answer: `Teslimat süreleri sipariş miktarına ve coğrafi konumunuza bağlı olarak değişebilir. Normalde, siparişinizi aldıktan sonra 3 iş günü içinde teslimat yapabiliriz.`,
-          },
-          {
-            question: "İade politikası nedir",
-            answer: `Ürünlerimizle ilgili bir sorun yaşarsanız veya memnun kalmazsanız, bize ulaşarak iade veya değişim talebinde bulunabilirsiniz. İade politikamız hakkında daha fazla detay sunabiliriz.`,
-          },
-
-          {
-            question: "Toplu alım yapmak için nasıl bir süreç izlenir",
-            answer: `Toplu alım yapmak isterseniz, bir satış temsilcisi ile iletişime geçerek siparişinizi yerleştirebilirsiniz. Siparişinizi onayladıktan sonra, ödeme koşulları ve teslimat düzenlemeleri hakkında daha fazla detay sağlarız`,
-          },
-        ]}
-      />
-
       {/* 
       breadcrumb */}
       <StaticBreadCrumb data={data} />
