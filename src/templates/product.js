@@ -6,7 +6,6 @@ import { SEO } from "../components/seo";
 import SimilarProducts from "../components/SimilarProducts";
 import { PortableText } from "@portabletext/react";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
-import { FAQJsonLd } from "gatsby-plugin-next-seo";
 
 export default function UrunDetay(props) {
   const {

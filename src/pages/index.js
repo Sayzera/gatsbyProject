@@ -2,7 +2,6 @@ import * as React from "react";
 import Slider from "../components/Slider";
 import image1 from "../assets/images/kiliclar-hirdavat-slider.webp";
 import image2 from "../assets/images/kiliclar-hirdavat-2.webp";
-
 import { Link, graphql } from "gatsby";
 import { useDispatch } from "react-redux";
 import { setProductType } from "../redux/queryParamsSlice";
@@ -10,6 +9,7 @@ import GetSomeCategories from "../components/GetSomeCategories";
 import { SEO } from "../components/seo";
 import SearchProductFilter from "../components/SearchProductInput";
 import SimilarProducts from "../components/SimilarProducts";
+import { Helmet } from "react-helmet";
 
 const IndexPage = ({ data }) => {
   const dispatch = useDispatch();
