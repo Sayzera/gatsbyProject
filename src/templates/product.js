@@ -14,6 +14,15 @@ export default function UrunDetay(props) {
   } = props;
 
   const _product = products?.filter((item) => item._id == data._id);
+
+  console.log(products);
+
+  // random 20 products
+  const random20Products = products
+    .sort(() => Math.random() - Math.random()) // ürünü karıştır
+    .slice(0, 20);
+
+  console.log(random20Products);
   let settings = useSiteMetadata();
 
   const myPortableTextComponents = {
@@ -134,6 +143,24 @@ export default function UrunDetay(props) {
                 />
               </li>
             </ul>
+
+            <h2 className="h2-title border-b border-gray-300  mb-2 pb-2">
+              Dikkatini Çekebilecek Ürünler
+            </h2>
+
+            <div className="detail-attr-container d-flex space-x-2 flex-wrap">
+              {random20Products.map((item) => (
+                <Link
+                  className="hover:underline hover:text-blue-500 text-gray-500"
+                  style={{
+                    textDecoration: "underline",
+                  }}
+                  to={`/urunler/${item.category.slug}/${item.slug}/${item._id}`}
+                >
+                  <span className="underline">{item.title}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

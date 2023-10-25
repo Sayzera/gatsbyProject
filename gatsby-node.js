@@ -71,7 +71,13 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  let products = await client.fetch(`*[_type == "products"]`);
+  let products = await client.fetch(`*[_type == "products"]{
+    ...,
+    "category": category->{
+      "slug":slug.current
+    },
+    "slug":slug.current
+  }`);
 
   result.data.allSanityProducts.edges.forEach((edge) => {
     createPage({
