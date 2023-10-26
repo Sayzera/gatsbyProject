@@ -11,7 +11,12 @@ export default function useSliderData() {
               category_name
               image {
                 asset {
-                  gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+                  gatsbyImageData(
+                    layout: CONSTRAINED
+                    placeholder: BLURRED
+                    width: 70
+                    height: 70
+                  )
                 }
               }
               slug {
