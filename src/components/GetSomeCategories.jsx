@@ -34,9 +34,12 @@ export default function GetSomeCategories() {
             }
           >
             <div className="flex h-full">
-              <div className="w-2/3 h-[250px] ">
+              <div className="w-2/3 h-[250px] flex justify-center">
                 <img
-                  src={sanityImageBuilder(item.image).url()}
+                  src={sanityImageBuilder(item.image)
+                    .width(300)
+                    .height(300)
+                    .url()}
                   alt="tablali_teker"
                   className="h-[100%] object-cover"
                 />

@@ -12,7 +12,12 @@ export default function useGetAllProducts() {
               title
               images {
                 asset {
-                  gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+                  gatsbyImageData(
+                    layout: CONSTRAINED
+                    placeholder: BLURRED
+                    width: 200
+                    height: 200
+                  )
                 }
               }
               slug {

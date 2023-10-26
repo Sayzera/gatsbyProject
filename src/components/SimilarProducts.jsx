@@ -29,31 +29,31 @@ function WithStyles({ image, title }) {
           <GatsbyImage
             image={getImage(image)}
             alt="Kılıçlar Hırdavat Slider"
-            className="h-[150px] w-100 md:!w-[205px]"
+            className="h-[150px] "
           />
         </div>
 
         <div className="p-2">
-          <p className="text-sm font-semibold">{title}</p>
+          <p className="text-xs font-semibold">{title.substring(0, 80)}</p>
         </div>
         <div className="mt-8">
           <div className="p-2 flex space-x-2 items-center">
             <div>
               <HiOutlinePhoneIncoming
                 className="text-xl text-[#4B4B4B]"
-                size={30}
+                size={20}
               />
             </div>
-            <span className="text-sm font-semibold">
+            <span className="text-xs font-semibold">
               Hemen Sipariş Vermek İçin Tıklayın
             </span>
           </div>
 
           <div className="p-2 flex items-center space-x-2">
             <div>
-              <ImWhatsapp className="text-xl text-green-500" size={30} />
+              <ImWhatsapp className="text-xl text-green-500" size={20} />
             </div>
-            <span className="text-sm font-semibold">
+            <span className="text-xs font-semibold">
               Detaylı bilgi için tıklayınız
             </span>
           </div>
