@@ -1,20 +1,18 @@
 import React from "react";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "gatsby";
-import { FaTruckFast } from "react-icons/fa6";
-import { ImWhatsapp } from "react-icons/im";
-import getProducts from "../api/getProducts";
-import { sanityImageBuilder } from "../lib/sanityImageBuilder";
-import { HiOutlinePhoneIncoming } from "react-icons/hi";
 import useGetAllProducts from "../hooks/useGetAllProducts";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import wpImageIcon from "../assets/images/icons8-whatsapp-40.png";
+import telIcon from "../assets/images/icons8-phone-48.png";
+import cargoImage from "../assets/images/icons8-cargo-48.png";
 
 function WithStyles({ image, title }) {
   return (
     <div className="widget-cart-similar">
       <div>
         <div className="bg-[#3ec461] widget-cart-logo">
-          <FaTruckFast className="text-xl text-white" />
+          <img src={cargoImage} width={20} className="mr-1" />
           <span className="widget-cart-logo-text text-white">
             Hızlı Teslimat
           </span>
@@ -39,10 +37,7 @@ function WithStyles({ image, title }) {
         <div className="mt-8">
           <div className="p-2 flex space-x-2 items-center">
             <div>
-              <HiOutlinePhoneIncoming
-                className="text-xl text-[#4B4B4B]"
-                size={20}
-              />
+              <img src={telIcon} width={40} />
             </div>
             <span className="text-xs font-semibold">
               Hemen Sipariş Vermek İçin Tıklayın
@@ -51,7 +46,7 @@ function WithStyles({ image, title }) {
 
           <div className="p-2 flex items-center space-x-2">
             <div>
-              <ImWhatsapp className="text-xl text-green-500" size={20} />
+              <img src={wpImageIcon} width={30} />
             </div>
             <span className="text-xs font-semibold">
               Detaylı bilgi için tıklayınız

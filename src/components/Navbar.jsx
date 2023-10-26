@@ -32,10 +32,6 @@ export default function Navbar() {
               image={getImage(_data.logo.asset)}
               alt="Kılıçlar Hırdavat"
               placeholder="blurred"
-              style={{
-                height: "5rem",
-                width: "200px",
-              }}
             />
           </Link>
         </div>
@@ -156,11 +152,6 @@ export default function Navbar() {
                 image={getImage(_data.logo.asset)}
                 alt="Kılıçlar Hırdavat"
                 placeholder="blurred"
-                style={{
-                  height: "5rem",
-                  width: "200px",
-                  objectFit: "contain",
-                }}
               />
             </Link>
             <button

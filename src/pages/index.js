@@ -1,7 +1,6 @@
 import * as React from "react";
 import Slider from "../components/Slider";
 import image1 from "../assets/images/kiliclar-hirdavat-slider.webp";
-import image2 from "../assets/images/kiliclar-hirdavat-2.webp";
 import { Link, graphql } from "gatsby";
 import { useDispatch } from "react-redux";
 import { setProductType } from "../redux/queryParamsSlice";
@@ -9,10 +8,32 @@ import GetSomeCategories from "../components/GetSomeCategories";
 import { SEO } from "../components/seo";
 import SearchProductFilter from "../components/SearchProductInput";
 import SimilarProducts from "../components/SimilarProducts";
-import { Helmet } from "react-helmet";
+import { StaticImage } from "gatsby-plugin-image";
 
 const IndexPage = ({ data }) => {
   const dispatch = useDispatch();
+
+  function Screen1() {
+    return (
+      <StaticImage
+        src="../assets/images/kiliclar-hirdavat-2.webp"
+        alt="Kılıçlar Hırdavat"
+        placeholder="blurred"
+        style={{ width: "100%", height: 250 }}
+      />
+    );
+  }
+
+  function Screen2() {
+    return (
+      <StaticImage
+        src="../assets/images/kiliclar-hirdavat-slider.webp"
+        alt="Kılıçlar Hırdavat"
+        placeholder="blurred"
+        style={{ width: "100%", height: 250 }}
+      />
+    );
+  }
 
   return (
     <div className="mx-auto  max-w-7xl items-center justify-between px-6 lg:px-8 select-none">
@@ -61,12 +82,8 @@ const IndexPage = ({ data }) => {
           <Link to="/urunler">
             <div className="relative min-h-[250px]">
               <div className="flex h-full">
-                <div className="w-2/3 min-h-[250px] ">
-                  <img
-                    src={image1}
-                    alt="tablali_teker"
-                    className="min-h-[250px] object-cover"
-                  />
+                <div className="w-2/3 min-h-[250px] flex justify-center">
+                  <Screen2 />
                 </div>
 
                 <div className="w-1/3 bg-[#4B4B4B] flex items-center justify-center">
@@ -89,14 +106,7 @@ const IndexPage = ({ data }) => {
             <div className="relative min-h-[250px]">
               <div className="flex h-full">
                 <div className="w-2/3 min-h-[250px] ">
-                  <img
-                    src={image2}
-                    alt="tablali_teker"
-                    className="h-[250px] object-cover"
-                    style={{
-                      width: "100%",
-                    }}
-                  />
+                  <Screen1 />
                 </div>
 
                 <div className="w-1/3 bg-[#4B4B4B] flex items-center justify-center">

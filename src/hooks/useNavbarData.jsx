@@ -9,7 +9,11 @@ export default function useNavbarData() {
           id
           logo {
             asset {
-              gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+              gatsbyImageData(
+                layout: CONSTRAINED
+                placeholder: BLURRED
+                width: 200
+              )
             }
           }
         }
