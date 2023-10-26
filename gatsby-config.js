@@ -79,6 +79,8 @@ module.exports = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-next-seo",
+    "gatsby-plugin-minify",
+    "gatsby-plugin-gatsby-cloud",
 
     {
       resolve: "gatsby-plugin-manifest",
