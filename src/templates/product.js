@@ -15,14 +15,11 @@ export default function UrunDetay(props) {
 
   const _product = products?.filter((item) => item._id == data._id);
 
-  console.log(products);
-
   // random 20 products
   const random20Products = products
     .sort(() => Math.random() - Math.random()) // ürünü karıştır
     .slice(0, 20);
 
-  console.log(random20Products);
   let settings = useSiteMetadata();
 
   const myPortableTextComponents = {

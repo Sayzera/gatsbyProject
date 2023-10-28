@@ -30,7 +30,8 @@ export default function ProductImagesSwiper(data) {
             <div className="swiper-zoom-container">
               <GatsbyImage
                 image={getImage(image.asset)}
-                alt="Kılıçlar Hırdavat Slider"
+                alt={data.data.title}
+                title={data.data.title}
               />
             </div>
           </SwiperSlide>
