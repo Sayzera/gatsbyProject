@@ -100,14 +100,8 @@ module.exports = {
       resolve: "gatsby-plugin-robots-txt",
       options: {
         host: "https://kiliclarticaret.com",
-        sitemap: "https://kiliclarticaret.com/sitemap-0.xml",
+        sitemap: "https://kiliclarticaret.com/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-canonical-urls`,
-      options: {
-        siteUrl: `https://kiliclarticaret.com`,
       },
     },
     {
