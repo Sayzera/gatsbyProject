@@ -141,7 +141,7 @@ export default function UrunDetay(props) {
               </li>
             </ul>
 
-            <h2 className="h2-title border-b border-gray-300  mb-2 pb-2">
+            {/* <h2 className="h2-title border-b border-gray-300  mb-2 pb-2">
               Dikkatini Çekebilecek Ürünler
             </h2>
 
@@ -157,7 +157,7 @@ export default function UrunDetay(props) {
                   <span className="underline">{item.title}</span>
                 </Link>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
